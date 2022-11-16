@@ -1,11 +1,21 @@
-import os, sys, re, statistics
+import os, sys, re, statistics, argparse
 from collections import defaultdict
+
+args_parser = argparse.ArgumentParser(description="Script for calculating statistics on families each phage matched.", epilog="Virginia Tech Department of Biological Sciences")
+args_parser.add_argument('-i', '--infile', required=True, help='Input table of ANI or AAI from step 2, with each phage and its AAI or ANI of each reference the phage hit to at least one protein.')
+args_parser.add_argument('-o', '--outfile', required=True, help='Output file with family statistics.')
+
+args_parser = args_parser.parse_args()
+
+infile_a = args_parser.infile
+outfile_a = args_parser.outfile
+
+blast_ani = open(infile_a,'r')
+outfile_open = open(outfile_a,'a')
 
 genhit2ident = defaultdict(list)
 genhit2prop = defaultdict(list)
 genhit2prot = defaultdict(list)
-
-blast_ani = open(sys.argv[1],'r')
 
 gen2prots = defaultdict(list)
 genprot2hit = defaultdict(list)
@@ -40,4 +50,5 @@ for key, values in gen2prots.items():
 		hinfolist = genhit2info[genome + "\t" + max_gen]
 		hinfo = "\t".join(hinfolist)
 		print(genome + "\t" + max_gen + "\t" + hinfo)
-
+		outfo = genome + "\t" + max_gen + "\t" + hinfo
+		outfile_open.write(outfo + "\n")
