@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#SBATCH -J bee_inphared_blastn
+#SBATCH -J phage_inphared_blastn
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=alainarw@vt.edu
 #SBATCH --nodes=1
@@ -14,4 +14,4 @@
 cd /groups/Aylward_Lab/Alaina/Side_hustles/bee_phage/beephage_inphared/
 
 
-blastn -query rd2_checkvbee_orfs.fna -out rd2_checkvbee_inphared_blast.txt -db /groups/Aylward_Lab/riley/caudo_inphared/caudo_inphared_genes_blastdb -evalue 0.001 -outfmt 6
+blastn -query your_phage_orfs.fna -out your_phage_inphared_blast.txt -db /groups/Aylward_Lab/inphared_nov22/inphared_11Nov2022/caudoviricetes/blastdbs/inphared_caudo_drep90_nov22_nucl_blastdb -evalue 0.001 -outfmt 6
