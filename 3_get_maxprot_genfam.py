@@ -1,8 +1,6 @@
 import os, sys, re, statistics
 from collections import defaultdict
 
-# python 2_get_max_fam_stats.py rd2_checkvbee_inphared_ani.tsv > rd2_checkvbee_inphared_fam_stat.tsv
-
 genhit2ident = defaultdict(list)
 genhit2prop = defaultdict(list)
 genhit2prot = defaultdict(list)
